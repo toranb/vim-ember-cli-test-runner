@@ -1,0 +1,25 @@
+*vim-ember-cli-test-runner.txt* A short multi line description of your plugin
+
+===============================================================================
+CONTENTS                                            *vim-ember-cli-test-runner*
+
+    1. Intro ................................ |vim-ember-cli-test-runner-intro|
+    2. Requirements .................. |vim-ember-cli-test-runner-requirements|
+    3. Usage ................................ |vim-ember-cli-test-runner-usage|
+    4. Licence ............................ |vim-ember-cli-test-runner-licence|
+===============================================================================
+1. Intro                                      *vim-ember-cli-test-runner-intro*
+
+Overview of plugin
+
+2. Requirements                        *vim-ember-cli-test-runner-requirements*
+
+What additional programs are required to run the plugin
+
+3. Usage                                      *vim-ember-cli-test-runner-usage*
+
+How to use the plugin. What functions does it give the user?
+
+4. Licence                                  *vim-ember-cli-test-runner-licence*
+
+This is open source make sure to include a licence
