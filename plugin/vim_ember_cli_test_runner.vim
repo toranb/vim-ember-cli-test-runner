@@ -4,7 +4,7 @@
 python import sys
 python import vim
 python sys.path.append(vim.eval('expand("<sfile>:h")'))
-python from vim_ember_cli_test_runner import get_name_of_current_module, get_name_of_current_test
+python from vim_ember_cli_test_runner import get_name_of_current_test_group
 
 " --------------------------------
 "  Function(s)
@@ -17,14 +17,14 @@ current_buffer = vim.current.buffer
 desired_test_group = vim.eval("a:desired_test_group")
 
 _query_string_value = {
-    'single_test': lambda: get_name_of_current_test(current_line_index, current_buffer),
-    'single_module': lambda: get_name_of_current_module(current_line_index, current_buffer),
+    'test': lambda: get_name_of_current_test_group(current_line_index, current_buffer, desired_test_group),
+    'module': lambda: get_name_of_current_test_group(current_line_index, current_buffer, desired_test_group),
     'all_tests': lambda: ""
 }
 
 _cli_command = {
-    'single_test': 'ember test --filter',
-    'single_module': 'ember test --module',
+    'test': 'ember test --filter',
+    'module': 'ember test --module',
     'all_tests': "ember test"
 }
 
@@ -40,5 +40,5 @@ endfunction
 "  Expose our commands to the user
 " --------------------------------
 command! RunAllEmberTests call RunEmberCliTests('all_tests')
-command! RunSingleEmberTest call RunEmberCliTests('single_test')
-command! RunSingleEmberTestModule call RunEmberCliTests('single_module')
+command! RunSingleEmberTest call RunEmberCliTests('test')
+command! RunSingleEmberTestModule call RunEmberCliTests('module')
