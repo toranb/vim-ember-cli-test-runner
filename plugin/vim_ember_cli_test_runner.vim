@@ -9,47 +9,36 @@ python from vim_ember_cli_test_runner import get_name_of_current_module, get_nam
 " --------------------------------
 "  Function(s)
 " --------------------------------
-function! RunEmberCliTest()
+function! RunEmberCliTests(desired_test_group)
 python << endOfPython
 
 current_line_index = vim.current.window.cursor[0]
 current_buffer = vim.current.buffer
-test_name = get_name_of_current_test(current_line_index, current_buffer)
+desired_test_group = vim.eval("a:desired_test_group")
+
+_query_string_value = {
+    'single_test': lambda: get_name_of_current_test(current_line_index, current_buffer),
+    'single_module': lambda: get_name_of_current_module(current_line_index, current_buffer),
+    'all_tests': lambda: ""
+}
+
+_cli_command = {
+    'single_test': 'ember test --filter',
+    'single_module': 'ember test --module',
+    'all_tests': "ember test"
+}
+
 if int(vim.eval("exists(':Dispatch')")) != 0:
-    vim.command('Dispatch ember test --filter "{}"'.format(test_name))
+    vim.command('Dispatch {} "{}"'.format(_cli_command[desired_test_group], _query_string_value[desired_test_group]()))
 else:
     vim.command('echo "The test runner requires vim-dispatch"')
 
 endOfPython
 endfunction
 
-function! RunEmberCliTestModule()
-python << endOfPython
-
-current_line_index = vim.current.window.cursor[0]
-current_buffer = vim.current.buffer
-module_name = get_name_of_current_module(current_line_index, current_buffer)
-if int(vim.eval("exists(':Dispatch')")) != 0:
-    vim.command('Dispatch ember test --module "{}"'.format(module_name))
-else:
-    vim.command('echo "The test runner requires vim-dispatch"')
-
-endOfPython
-endfunction
-
-function! RunAllEmberCliTests()
-python << endOfPython
-
-if int(vim.eval("exists(':Dispatch')")) != 0:
-    vim.command('Dispatch ember test')
-else:
-    vim.command('echo "The test runner requires vim-dispatch"')
-
-endOfPython
-endfunction
 " --------------------------------
 "  Expose our commands to the user
 " --------------------------------
-command! RunAllEmberTests call RunAllEmberCliTests()
-command! RunSingleEmberTest call RunEmberCliTest()
-command! RunSingleEmberTestModule call RunEmberCliTestModule()
+command! RunAllEmberTests call RunEmberCliTests('all_tests')
+command! RunSingleEmberTest call RunEmberCliTests('single_test')
+command! RunSingleEmberTestModule call RunEmberCliTests('single_module')
