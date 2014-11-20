@@ -10,16 +10,42 @@ CONTENTS                                            *vim-ember-cli-test-runner*
 ===============================================================================
 1. Intro                                      *vim-ember-cli-test-runner-intro*
 
-Overview of plugin
+If you are a Vim user and write Ember apps using ember-cli then this plugin is
+for you. With this plugin you can run all of the tests for your Ember project,
+a single module of tests, or one individual test all without leaving your Vim
+buffer.
 
 2. Requirements                        *vim-ember-cli-test-runner-requirements*
 
-What additional programs are required to run the plugin
+You will need to have [vim-dispatch](https://github.com/tpope/vim-dispatch)
+installed for this plugin to run the tests in an asynchronous manner.
 
 3. Usage                                      *vim-ember-cli-test-runner-usage*
 
-How to use the plugin. What functions does it give the user?
+The plugin provides three commands:
+
+``` text
+RunAllEmberTests
+RunSingleEmberTest
+RunSingleEmberTestModule
+```
+
+Ensure that your cursor is within a module or test as appropriate for the
+desired command that you are trying to run.
 
 4. Licence                                  *vim-ember-cli-test-runner-licence*
 
-This is open source make sure to include a licence
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+
+Version 2, December 2004
+
+Copyright (C) 2014 Jarrod C Taylor [Jarrod@JarrodCTaylor.com]
+
+Everyone is permitted to copy and distribute verbatim or modified copies of
+this license document, and changing it is allowed as long as the name is
+changed.
+
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR COPYING,
+DISTRIBUTION AND MODIFICATION
+
+0. You just DO WHAT THE FUCK YOU WANT TO.
