@@ -23,9 +23,11 @@ The plugin provides three commands:
 RunAllEmberTests
 RunSingleEmberTest
 RunSingleEmberTestModule
+RerunLastEmberTests
 ```
 
-Ensure that your cursor is within a module or test as appropriate for the desired command that you are trying to run.
+Ensure that your cursor is within a module or test as appropriate for the
+desired command that you are trying to run.
 
 
 ## Installation

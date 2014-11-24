@@ -29,11 +29,20 @@ _cli_command = {
 }
 
 if int(vim.eval("exists(':Dispatch')")) != 0:
+    vim.command("let g:last_ember_test_command = 'Dispatch {} \"{}\"'".format(_cli_command[desired_test_group], _query_string_value[desired_test_group]()))
     vim.command('Dispatch {} "{}"'.format(_cli_command[desired_test_group], _query_string_value[desired_test_group]()))
 else:
     vim.command('echo "The test runner requires vim-dispatch"')
 
 endOfPython
+endfunction
+
+function! RerunLastEmberCliTests()
+    if exists("g:last_ember_test_command")
+        exe g:last_ember_test_command
+    else
+        echo "You must first run tests grasshopper before you can rerun them."
+    endif
 endfunction
 
 " --------------------------------
@@ -42,3 +51,4 @@ endfunction
 command! RunAllEmberTests call RunEmberCliTests('all_tests')
 command! RunSingleEmberTest call RunEmberCliTests('test')
 command! RunSingleEmberTestModule call RunEmberCliTests('module')
+command! RerunLastEmberTests call RerunLastEmberCliTests()
