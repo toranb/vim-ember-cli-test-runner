@@ -6,7 +6,7 @@ line_regex = {
 
 name_regex = {
     "module": re.compile(r"(?:module\(?[\"']?\s?[\"']?)(.*)(?:[\"']\)?,?;?)"),
-    "test": re.compile(r"(?:test\(?[\"']?\s?[\"']?)(.*)(?:[\",],)")}
+    "test": re.compile(r"(?:test\(?[\"']?\s?[\"']?)(.*)(?:[\"',],)")}
 
 
 def get_name_of_current_test_group(current_line_index, current_buffer, desired_test_group):
