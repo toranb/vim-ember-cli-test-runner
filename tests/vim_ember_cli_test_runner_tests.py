@@ -1,5 +1,8 @@
+import os
 import unittest
-import vim_ember_cli_test_runner as sut
+from inspect import getfile, currentframe
+
+import autoload.vim_ember_cli_test_runner as sut
 
 
 class VimEmberCliTestRunnerTests(unittest.TestCase):
@@ -41,7 +44,8 @@ class VimEmberCliTestRunnerTests(unittest.TestCase):
         self.assertEqual("test example2b", result_2)
 
     def build_buffer_helper(self, file_name):
-        with open(file_name, "r") as f:
+        current_dir = os.path.dirname(os.path.abspath(getfile(currentframe())))
+        with open("{}/{}".format(current_dir, file_name), "r") as f:
             current_buffer = []
             for line in f.readlines():
                 current_buffer.append(line)
