@@ -24,7 +24,7 @@ _query_string_value = {
 
 _cli_command = {
     'test': 'ember test --filter',
-    'module': 'ember test --module',
+    'module': 'ember test --filter',
     'all_tests': "ember test"
 }
 

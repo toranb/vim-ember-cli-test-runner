@@ -1,6 +1,6 @@
 
 
-module("Module 1");
+moduleForAcceptance("Module 1");
 
 test("test example1a", function() {
   equal(5, 5, "The values are equal");
