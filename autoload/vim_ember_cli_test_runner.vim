@@ -1,16 +1,16 @@
 " --------------------------------
 " Add our plugin to the path
 " --------------------------------
-python import sys
-python import vim
-python sys.path.append(vim.eval('expand("<sfile>:h")'))
-python from vim_ember_cli_test_runner import get_name_of_current_test_group
+python3 import sys
+python3 import vim
+python3 sys.path.append(vim.eval('expand("<sfile>:h")'))
+python3 from vim_ember_cli_test_runner import get_name_of_current_test_group
 
 " --------------------------------
 "  Function(s)
 " --------------------------------
 function! vim_ember_cli_test_runner#RunEmberCliTests(desired_test_group)
-python << endOfPython
+python3 << endOfPython
 
 current_line_index = vim.current.window.cursor[0]
 current_buffer = vim.current.buffer
