@@ -2,7 +2,7 @@ import re
 
 line_regex = {
     "module": re.compile(r"^module"),
-    "test": re.compile(r"^test")}
+    "test": re.compile(r"^\s*test")}
 
 name_regex = {
     "module": re.compile(r"(?:module(ForAcceptance)?\(?([\"']?\s?[\"']?)(.*)(?:[\"']\)?),?;?)"),
